@@ -1,16 +1,30 @@
-import menuIconURL from "./assets/menu-icon.svg";
+import { useState } from "react";
+
+import menuIconURL from "./assets/menu_icon.svg";
+import closeMenuIconURL from "./assets/close_menu.svg";
 import logoURL from "./assets/logo.svg";
-import searchIconURL from "./assets/search-icon.svg";
-import shoppingListIconURL from "./assets/shopping-list.svg";
+import searchIconURL from "./assets/search_icon.svg";
+import shoppingListIconURL from "./assets/shopping_list.svg";
 
 import classes from "./header.module.css";
 export function Header() {
+  const [showMenu, setShowMenu] = useState(true);
+  const menuURL = showMenu ? menuIconURL : closeMenuIconURL;
+
   return (
     <header>
       {/* Menu and Logo group */}
       <div className={classes["header-groups"]}>
-        <button aria-label="Menu" className={classes["menu-button"]}>
-          <img src={menuIconURL}></img>
+        <button
+          aria-label="Menu"
+          className={classes["header-button"] + " " + classes["menu-button"]}
+        >
+          <img
+            src={menuURL}
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+          ></img>
         </button>
         <h1>
           <a className={classes["main-logo"]} href="/">
@@ -21,7 +35,7 @@ export function Header() {
       {/* Search and Shopping list group */}
       <div className={classes["header-groups"]}>
         <button
-          className={classes["menu-button"] + " " + classes["search-button"]}
+          className={classes["header-button"] + " " + classes["search-button"]}
         >
           <img src={searchIconURL} alt="Search Icon"></img>
           <span className={classes["search-text"]}>Search</span>
