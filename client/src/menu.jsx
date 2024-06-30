@@ -8,6 +8,8 @@ import RecipesURL from "./assets/recipes.webp";
 import ListenURL from "./assets/listen.webp";
 import CareersURL from "./assets/careers.webp";
 
+import classes from "./menu.module.css";
+
 const MOBILE_WIDTH = 750;
 // This should be replaced with data from backend
 const data = {
@@ -219,18 +221,27 @@ export function Menu() {
 }
 
 function MobileMenu() {
-  const [state, setState] = useState([0]);
+  const [state, setState] = useState([]);
 
   let itemsToDisplay = data;
   state.forEach((index) => {
     itemsToDisplay = itemsToDisplay["children"][index];
   });
 
+  const isMainMenu = state.length === 0;
+
   const elements = itemsToDisplay["children"].map((item, index) => {
     return (
-      <li key={item.label}>
+      <li
+        className={isMainMenu ? classes["main-menu-item"] : ""}
+        key={item.label}
+      >
+        {item.image && (
+          <img className={classes["menu-logo"]} src={item.image} />
+        )}
         {item.children ? (
           <button
+            className={classes["menu-button"]}
             onClick={() => {
               const newState = [...state];
               newState.push(index);
@@ -240,7 +251,9 @@ function MobileMenu() {
             {item.label}
           </button>
         ) : (
-          <a href={item.href}>{item.label}</a>
+          <a className={classes["menu-link"]} href={item.href}>
+            {item.label}
+          </a>
         )}
       </li>
     );
@@ -259,7 +272,6 @@ function MobileMenu() {
           {`<`} {itemsToDisplay.label}
         </button>
       )}
-      <br />
       {itemsToDisplay.href && (
         <a href={itemsToDisplay.href}>All {itemsToDisplay.label}</a>
       )}

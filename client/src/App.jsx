@@ -10,9 +10,11 @@ function App() {
   return (
     <>
       <Header showMenu={showMenu} toggleShowMenu={toggleShowMenu} />
-      <div className={showMenu ? "show-menu" : "hide-menu"}>
-        <Menu />
-      </div>
+      <main>
+        <div className={showMenu ? "show-menu" : "hide-menu"}>
+          <Menu />
+        </div>
+      </main>
     </>
   );
 }

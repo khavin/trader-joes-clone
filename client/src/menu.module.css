@@ -1,0 +1,32 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+.main-menu-item {
+  font-size: 1.35rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--divider-color);
+  min-height: 4.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+.menu-logo {
+  width: 3.5rem;
+}
+.menu-button {
+  background-color: inherit;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+.menu-link {
+  text-decoration: none;
+  color: black;
+}

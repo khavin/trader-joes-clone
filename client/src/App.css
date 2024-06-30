@@ -1,7 +1,8 @@
+main {
+  padding: 1.5rem;
+}
 .show-menu {
   display: block;
-  height: 100%;
-  overflow: hidden;
 }
 .hide-menu {
   display: none;
