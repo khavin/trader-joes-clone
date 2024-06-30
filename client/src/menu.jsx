@@ -7,6 +7,7 @@ import DiscoverURL from "./assets/discover.webp";
 import RecipesURL from "./assets/recipes.webp";
 import ListenURL from "./assets/listen.webp";
 import CareersURL from "./assets/careers.webp";
+import LeftNavURL from "./assets/left_nav.svg";
 
 import classes from "./menu.module.css";
 
@@ -235,23 +236,41 @@ function MobileMenu() {
       <li
         className={isMainMenu ? classes["main-menu-item"] : ""}
         key={item.label}
+        onClick={
+          item.children
+            ? () => {
+                const newState = [...state];
+                newState.push(index);
+                setState(newState);
+              }
+            : undefined
+        }
       >
         {item.image && (
           <img className={classes["menu-logo"]} src={item.image} />
         )}
         {item.children ? (
           <button
-            className={classes["menu-button"]}
-            onClick={() => {
-              const newState = [...state];
-              newState.push(index);
-              setState(newState);
-            }}
+            className={
+              classes["menu-button"] +
+              " " +
+              (!isMainMenu && classes["individual-content-link"])
+            }
           >
             {item.label}
+            {!isMainMenu && (
+              <img className={classes["right-nav-logo"]} src={LeftNavURL} />
+            )}
           </button>
         ) : (
-          <a className={classes["menu-link"]} href={item.href}>
+          <a
+            className={
+              classes["menu-link"] +
+              " " +
+              (!isMainMenu && classes["individual-content-link"])
+            }
+            href={item.href}
+          >
             {item.label}
           </a>
         )}
@@ -263,19 +282,25 @@ function MobileMenu() {
     <nav>
       {itemsToDisplay.label && (
         <button
+          className={classes["menu-button"] + " " + classes["previous-menu"]}
           onClick={() => {
             const newState = [...state];
             newState.pop();
             setState(newState);
           }}
         >
-          {`<`} {itemsToDisplay.label}
+          <img src={LeftNavURL} /> {itemsToDisplay.label}
         </button>
       )}
       {itemsToDisplay.href && (
-        <a href={itemsToDisplay.href}>All {itemsToDisplay.label}</a>
+        <a
+          className={classes["menu-link"] + " " + classes["all-content-link"]}
+          href={itemsToDisplay.href}
+        >
+          All {itemsToDisplay.label}
+        </a>
       )}
-      <ul>{elements}</ul>
+      <ul className={classes["individual-content-links"]}>{elements}</ul>
     </nav>
   );
 }
