@@ -7,9 +7,8 @@ import searchIconURL from "./assets/search_icon.svg";
 import shoppingListIconURL from "./assets/shopping_list.svg";
 
 import classes from "./header.module.css";
-export function Header() {
-  const [showMenu, setShowMenu] = useState(true);
-  const menuURL = showMenu ? menuIconURL : closeMenuIconURL;
+export function Header({ showMenu, toggleShowMenu }) {
+  const menuURL = !showMenu ? menuIconURL : closeMenuIconURL;
 
   return (
     <header>
@@ -22,12 +21,12 @@ export function Header() {
           <img
             src={menuURL}
             onClick={() => {
-              setShowMenu(!showMenu);
+              toggleShowMenu(!showMenu);
             }}
           ></img>
         </button>
-        <h1>
-          <a className={classes["main-logo"]} href="/">
+        <h1 className={classes["main-logo"]}>
+          <a className={classes["main-logo-link"]} href="/">
             <img src={logoURL} alt="Trader Joe's Logo"></img>
           </a>
         </h1>

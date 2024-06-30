@@ -1,0 +1,8 @@
+.show-menu {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+.hide-menu {
+  display: none;
+}

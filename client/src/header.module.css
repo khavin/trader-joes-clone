@@ -1,10 +1,10 @@
 header {
-  padding-left: 3.5rem;
-  padding-right: 2rem;
+  padding: 0.5rem 2rem 0.5rem 3.5rem;
   position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid black;
 }
 .header-groups {
   display: flex;
@@ -28,9 +28,12 @@ header {
   min-width: 2.625rem;
 }
 .main-logo {
+  margin: 0;
+}
+.main-logo-link {
   margin-left: 4rem;
 }
-.main-logo:focus-visible {
+.main-logo-link:focus-visible {
   outline-color: var(--red-color);
 }
 .search-button {
@@ -63,12 +66,13 @@ header {
 
 @media only screen and (max-width: 750px) {
   header {
-    padding: 0 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .header-groups {
     gap: 0.5rem;
   }
-  .main-logo {
+  .main-logo-link {
     margin-left: 0;
   }
   .search-text,

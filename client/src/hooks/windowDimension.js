@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 // Get current dimensions
 function getWindowDimension() {
-  const h = window.innerHeight;
-  const w = window.innerWidth;
+  const height = window.innerHeight;
+  const width = window.innerWidth;
 
   return {
-    w,
-    h,
+    width,
+    height,
   };
 }
 
