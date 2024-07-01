@@ -1,17 +1,13 @@
-import { useState } from "react";
-
 import { useWindowDimensions } from "./hooks/windowDimension";
+import { DesktopMenu } from "./desktop_menu";
 import { MobileMenu } from "./mobile_menu";
 import ProductsURL from "./assets/products.webp";
 import DiscoverURL from "./assets/discover.webp";
 import RecipesURL from "./assets/recipes.webp";
 import ListenURL from "./assets/listen.webp";
 import CareersURL from "./assets/careers.webp";
-import LeftNavURL from "./assets/left_nav.svg";
 
-import classes from "./menu.module.css";
-
-const MOBILE_WIDTH = 750;
+const MOBILE_WIDTH = 900;
 // This should be replaced with data from backend
 const data = {
   children: [
@@ -223,7 +219,9 @@ const data = {
 export function Menu() {
   const { width } = useWindowDimensions();
 
-  return <MobileMenu data={data} />;
-}
+  if (width <= MOBILE_WIDTH) {
+    return <MobileMenu data={data} />;
+  }
 
-function DesktopMenu() {}
+  return <DesktopMenu data={data} />;
+}

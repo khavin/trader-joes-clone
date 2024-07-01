@@ -1,12 +1,5 @@
 import { useState } from "react";
-
-import ProductsURL from "./assets/products.webp";
-import DiscoverURL from "./assets/discover.webp";
-import RecipesURL from "./assets/recipes.webp";
-import ListenURL from "./assets/listen.webp";
-import CareersURL from "./assets/careers.webp";
 import LeftNavURL from "./assets/left_nav.svg";
-
 import classes from "./mobile_menu.module.css";
 
 export function MobileMenu({ data }) {
