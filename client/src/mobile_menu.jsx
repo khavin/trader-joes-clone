@@ -69,7 +69,7 @@ export function MobileMenu({ data }) {
   });
 
   return (
-    <nav>
+    <nav className="menu">
       {/* Previous screen navigation */}
       {itemsToDisplay.label && (
         <button

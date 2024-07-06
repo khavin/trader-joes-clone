@@ -1,5 +1,10 @@
 import classes from "./desktop_menu.module.css";
-
+/**
+ * Desktop menu component that shows the menu as columns
+ *
+ * @param {*} data menu data and the order of section titles
+ * @return DesktopMenu component
+ */
 export function DesktopMenu({ data }) {
   const columns = data.desktopOrder.map((sectionNames, index) => {
     return (
@@ -23,9 +28,15 @@ export function DesktopMenu({ data }) {
     );
   });
 
-  return <nav className={classes["section-grid"]}>{columns}</nav>;
+  return <nav className={"menu " + classes["section-grid"]}>{columns}</nav>;
 }
 
+/**
+ * MenuSection component that shows the links of a section
+ *
+ * @param {*} sectionData
+ * @returns MenuSection component
+ */
 function MenuSection({ sectionData }) {
   const sectionItems = flatObjects(sectionData);
   return (
@@ -53,6 +64,12 @@ function MenuSection({ sectionData }) {
   );
 }
 
+/**
+ * The function creates the class name based on the link level
+ *
+ * @param {*} level link level
+ * @returns CSS class name
+ */
 function getClassBasedOnLinkLevel(level) {
   if (level === undefined || level === null) {
     level = 3;
@@ -61,6 +78,13 @@ function getClassBasedOnLinkLevel(level) {
   return "link-level-" + level;
 }
 
+/**
+ * The function creates a new array by recursively appending the "children" property
+ * values and flattening them before returning.
+ *
+ * @param {*} obj The menu object to flatten
+ * @returns Array of children values
+ */
 function flatObjects(obj) {
   if (obj.children === undefined) return [obj];
   const items = obj.children.map((item) => {
