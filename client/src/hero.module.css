@@ -1,6 +1,6 @@
 .hero-container {
   position: relative;
-  min-height: 40rem;
+  height: 40rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,6 +8,7 @@
 .hero-section {
   width: 35rem;
   height: 18rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,9 +29,21 @@
 }
 .hero-img {
   width: 100%;
-  height: 40rem;
+  height: inherit;
   object-fit: cover;
   position: absolute;
   z-index: -1;
   top: 0;
+}
+
+@media only screen and (max-width: 750px) {
+  .hero-container {
+    height: 35rem;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  .hero-content {
+    font-size: 1.05rem;
+  }
 }
