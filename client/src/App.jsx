@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Header } from "./header";
 import { Menu } from "./menu";
+import { Home } from "./home";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <div className={showMenu ? "show-menu" : "hide-menu"}>
           <Menu />
         </div>
+        {!showMenu && <Home></Home>}
       </main>
     </>
   );

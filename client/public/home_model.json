@@ -1,0 +1,12 @@
+{
+  "heroContent": {
+    "title": "Take a Dip!",
+    "content": "Mix Trader Joe's Almond Chipotle Dip with a couple simple ingredients to create a smooth, smoky, spicy salad dressing that'll boost your BBQ side salads this holiday weekend!",
+    "imageAltText": "Trader Joe's Almond Chipotle Dip shown in recipe for Almond Chipotle Salad Dressing; black surface with bowl of chopped salad, avocado slices and lime topped with Almond Chipotle Dressing; limes, parsley garnish",
+    "imageLink": "/hero_image.webp",
+    "callToAction": {
+      "content": "GET THE RECIPE",
+      "link": "/home/recipes/almond-chipotle-salad-dressing"
+    }
+  }
+}

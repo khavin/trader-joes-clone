@@ -1,5 +1,7 @@
 :root {
   --red-color: #c81e24;
+  --dark-red-color: #af0006;
+  --dark-orange-color: #a5684d;
   --divider-color: #d0d0d0;
   --biege-color: #f8f8f2;
   font-family: Arial, Helvetica, sans-serif;
@@ -7,4 +9,51 @@
 body {
   margin: 0;
   background-color: var(--biege-color);
+}
+.primary-button {
+  position: relative;
+  box-sizing: border-box;
+  height: 2.5rem;
+  background-color: white;
+  padding: 0rem 2rem;
+  border: 1px solid var(--dark-orange-color);
+  color: var(--dark-red-color);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.025rem;
+  cursor: pointer;
+  box-shadow: 0.5rem 0.5rem rgba(44, 44, 44, 0.2);
+  min-width: 6.25rem;
+  transition: all 0.05s ease;
+}
+.primary-button::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-top: 1px solid var(--dark-orange-color);
+  border-left: 1px solid var(--dark-orange-color);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+}
+.primary-button::after {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-right: 1px solid var(--dark-orange-color);
+  border-bottom: 1px solid var(--dark-orange-color);
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+}
+.primary-button:hover {
+  border-width: 2px;
+  box-shadow: 0.625rem 0.625rem rgba(44, 44, 44, 0.2);
+  background: var(--biege-color);
+}
+.primary-button:hover::before,
+.primary-button:hover::after {
+  border-width: 2px;
 }
