@@ -1,0 +1,16 @@
+.main-content {
+  margin: 1.5rem;
+}
+.main-welcome-msg {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 8rem;
+}
+.whats-new-section {
+  width: 50%;
+}
+@media only screen and (max-width: 750px) {
+  .main-welcome-msg {
+    font-size: 1.75rem;
+  }
+}
