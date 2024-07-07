@@ -1,4 +1,9 @@
-.img img {
+.article {
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+.article-img img {
   box-sizing: border-box;
   width: 100%;
   height: 20rem;
@@ -9,6 +14,14 @@
 .title {
   font-size: 1.75rem;
 }
+.title a {
+  text-decoration: none;
+  color: black;
+  border-bottom: 3px solid inherit;
+}
+.title a:hover {
+  border-bottom: 3px solid black;
+}
 .content {
   text-align: justify;
   line-height: 1.5rem;
@@ -17,4 +30,68 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+.scroll-container {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.article-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nav-button {
+  display: flex;
+  box-sizing: border-box;
+  background-color: inherit;
+  border: none;
+  padding: 0 0.1rem;
+  font-size: 1rem;
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+.nav-button.active {
+  font-weight: 600;
+  border-bottom: 2px solid var(--red-color);
+}
+::-webkit-scrollbar {
+  width: 0;
+}
+.arrow > img {
+  width: 1rem;
+  height: 1rem;
+}
+.arrow > img {
+  width: 1rem;
+  height: 1rem;
+}
+.right-arrow > img {
+  transform: rotate(180deg);
+}
+.bullets {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.bullets > span {
+  display: inline-block;
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: #a0a0a0;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 750px) {
+  .article-img img {
+    height: 12.5rem;
+  }
+  .title {
+    font-size: 1.25rem;
+  }
+  .scroll-container {
+    overflow-x: scroll;
+  }
 }

@@ -13,7 +13,7 @@
 }
 @media only screen and (max-width: 750px) {
   .main-content {
-    margin: 1.5rem;
+    margin: 0.25rem;
   }
   .main-welcome-msg {
     font-size: 1.75rem;

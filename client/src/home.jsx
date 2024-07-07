@@ -27,6 +27,8 @@ export function Home() {
             <section className={classes["whats-new-section"]}>
               <WhatsNew articles={modelData.whatsNew} />
             </section>
+            <br></br>
+            <br></br>
           </section>
         </>
       )}
