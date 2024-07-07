@@ -1,18 +1,19 @@
-h2 {
+.title {
   font-size: 1.1rem;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
   position: relative;
+  margin-bottom: 2.6rem;
 }
-h2::after {
+.title::after {
   content: "";
   padding: 0.125rem;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
 
-h2 img {
+.title img {
   position: absolute;
   width: 8.5rem;
   top: -200%;
