@@ -17,6 +17,7 @@
   padding: 1rem 2.5rem;
   background-color: white;
   border: 4px double black;
+  box-shadow: 0.65rem 0.65rem rgba(44, 44, 44, 0.2);
 }
 .hero-title {
   font-size: 3rem;
