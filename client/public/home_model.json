@@ -8,5 +8,62 @@
       "content": "GET THE RECIPE",
       "link": "/home/recipes/almond-chipotle-salad-dressing"
     }
-  }
+  },
+  "whatsNew": [
+    {
+      "title": "Organic Mango Vinaigrette Dressing",
+      "content": "As it turns out, summertime salads positively shine when dressed in a fusion of sweet, tangy, and tropical flavors... And lucky for you, Trader Joe’s Organic Mango Vinaigrette Dressing deftly incorporates each of these attributes, setting the table for some fantastically fresh, summer fare.",
+      "link": "/home/products/pdp/organic-mango-vinaigrette-dressing-077513",
+      "image": [
+        {
+          "type": "img",
+          "src": "/organic_mango.webp"
+        }
+      ]
+    },
+    {
+      "title": "Lemon Herb Macaroni Salad",
+      "content": "Modeled after a popular modern take on the classic recipe, Trader Joe’s Lemon Herb Macaroni Salad is not your grandmother’s mac. Of course, semolina elbow Macaroni anchors our chilled Salad in nostalgia, and the dressing mimics the creamy, mayo-based version of the past. Beyond these familiarities, though, the recipe departs for a new era, going lighter on the mayo and incorporating buttermilk, which hints at a tanginess that arrives in full with a cucumber, celery, and caper relish in a vinegar, white wine, and lemon juice brine.",
+      "link": "/home/products/pdp/lemon-herb-macaroni-salad-074459",
+      "image": [
+        {
+          "type": "img",
+          "src": "/lemon_herb.webp"
+        }
+      ]
+    },
+    {
+      "title": "Oven Dried Red & Yellow Bell Pepper Crisps",
+      "content": "Peter Piper was probably pleased when he picked a peck of pickled peppers. While we’d never throw shade at a nightshade in <em>any</em> form, we’d like to posit that peckish Peter Piper would have been <em>even more</em> pleased had he picked up a peck—er, a bag—of Trader Oven Dried Red &amp; Yellow Bell Pepper Crisps instead!&nbsp;",
+      "link": "/home/products/pdp/oven-dried-red-yellow-bell-pepper-crisps-077786",
+      "image": [
+        {
+          "type": "img",
+          "src": "/oven_red_dried.webp"
+        }
+      ]
+    },
+    {
+      "title": "Bubble Waffles",
+      "content": "If you’re a fan of bubble tea beverages (a.k.a. boba), then chances are you’ve seen Bubble Waffles sold right along with them. Also known as gai daan zai in Cantonese, they first appeared on the Hong Kong street-food scene way back in the 1950s. Later nicknamed “Bubble Waffles,” at least in part for their uncanny resemblance to actual bubble wrap, they’ve been a standby in cafés, sidewalk stalls, and home kitchens ever since... and now, in the freezers at your neighborhood Trader Joe’s, too! (We can sense your bubbling joy from here!)",
+      "link": "/home/products/pdp/bubble-waffles-077991",
+      "image": [
+        {
+          "type": "img",
+          "src": "/bubble_waffles.webp"
+        }
+      ]
+    },
+    {
+      "title": "Kosher Dill Pickle Chips",
+      "content": "We’re not saying that there’s never a context in which a sandwich or burger can be considered complete without pickles. What we would venture to say, however, is that there’s almost never a situation where pickles wouldn’t improve a sandwich or burger. And Trader Joe’s Kosher Dill Pickle Chips, available now in our refrigerators, are particularly suited for such improvement. Much of that is owed to the fact that, after our supplier slices them into perfectly sized, crinkle-cut rounds, they’re cold-packed in a savory, well-seasoned brine, which helps them maintain their delectably crisp structure more than their hot-packed, shelf stable cousins. All that results in a fresher feel, fuller flavor, and an even more satisfying textural elemental for anything they’re added to.",
+      "link": "/home/products/pdp/kosher-dill-pickle-chips-076439",
+      "image": [
+        {
+          "type": "img",
+          "src": "/kosher_dill_pickle.webp"
+        }
+      ]
+    }
+  ]
 }

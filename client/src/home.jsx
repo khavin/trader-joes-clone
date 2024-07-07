@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Hero } from "./hero";
-import { SectionHeader } from "./section_header";
+import { WhatsNew } from "./whats_new";
 import classes from "./home.module.css";
 export function Home() {
   const [modelData, setModelData] = useState(null);
@@ -25,10 +25,7 @@ export function Home() {
               Welcome to Trader Joe's!
             </h1>
             <section className={classes["whats-new-section"]}>
-              <SectionHeader
-                title={"What's New?"}
-                imageLink={"./whats_new.webp"}
-              />
+              <WhatsNew articles={modelData.whatsNew} />
             </section>
           </section>
         </>
