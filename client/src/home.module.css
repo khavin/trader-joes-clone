@@ -1,5 +1,6 @@
 .main-content {
-  margin: 1.5rem;
+  max-width: 70rem;
+  margin: 0 auto;
 }
 .main-welcome-msg {
   text-align: center;
@@ -10,7 +11,14 @@
   width: 50%;
 }
 @media only screen and (max-width: 750px) {
+  .main-content {
+    margin: 1.5rem;
+  }
   .main-welcome-msg {
     font-size: 1.75rem;
+    margin-bottom: 4rem;
+  }
+  .whats-new-section {
+    width: 100%;
   }
 }

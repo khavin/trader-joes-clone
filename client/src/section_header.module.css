@@ -15,10 +15,18 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-
 .title img {
   position: absolute;
   width: 8.5rem;
   top: -200%;
   right: 1%;
+}
+
+@media only screen and (max-width: 750px) {
+  .title img {
+    display: none;
+  }
+  .title-with-img {
+    margin-bottom: 1.5rem;
+  }
 }
