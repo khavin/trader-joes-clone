@@ -4,7 +4,10 @@
   flex-direction: column;
   gap: 0.15rem;
   position: relative;
-  margin-bottom: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+.title-with-img {
+  margin-bottom: 2.8rem;
 }
 .title::after {
   content: "";
@@ -17,5 +20,5 @@
   position: absolute;
   width: 8.5rem;
   top: -200%;
-  right: 0;
+  right: 1%;
 }
