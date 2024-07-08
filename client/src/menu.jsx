@@ -7,7 +7,8 @@ import RecipesURL from "./assets/recipes.webp";
 import ListenURL from "./assets/listen.webp";
 import CareersURL from "./assets/careers.webp";
 
-const MOBILE_WIDTH = 900;
+import { MOBILE_WIDTH } from "./constants";
+
 // This should be replaced with data from backend
 const data = {
   children: [

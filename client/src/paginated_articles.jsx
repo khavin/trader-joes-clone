@@ -3,7 +3,7 @@ import { useWindowDimensions } from "./hooks/windowDimension";
 import ArrowURL from "./assets/arrow.svg";
 import classes from "./paginated_articles.module.css";
 
-const MOBILE_WIDTH = 900;
+import { MOBILE_WIDTH } from "./constants";
 
 export function PaginatedArticles({ articles }) {
   const componentId = useId();
