@@ -22,6 +22,14 @@ export function PaginatedArticles({ articles }) {
 
   // Create article elements
   const elements = articles.map((article, index) => {
+    // Articles should not be navigated using tabs in desktop view.
+    // Set tab index as "0" for the article element in view and as "-1" for the others. This will disable scrolling to next/previous article using tab. Users should be able to navigate to other articles only using pagination.
+    const conditionalAttributes = {};
+    // Only for desktop view
+    if (width > MOBILE_WIDTH) {
+      conditionalAttributes["tabIndex"] = page === index ? "0" : "-1";
+    }
+
     return (
       <article
         id={componentId + "-article-" + index}
@@ -40,8 +48,7 @@ export function PaginatedArticles({ articles }) {
           })}
         </picture>
         <h3 className={classes["title"]}>
-          {/* Set tab index for the article element in view. This will disable scrolling to next/previous article using tab. Users should be able to navigate to other articles only using pagination. */}
-          <a tabIndex={page === index ? "0" : "-1"} href={article.link}>
+          <a {...conditionalAttributes} href={article.link}>
             {article.title}
           </a>
         </h3>

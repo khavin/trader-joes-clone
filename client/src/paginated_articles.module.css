@@ -66,10 +66,6 @@
   width: 1rem;
   height: 1rem;
 }
-.arrow > img {
-  width: 1rem;
-  height: 1rem;
-}
 .right-arrow > img {
   transform: rotate(180deg);
 }
@@ -94,5 +90,9 @@
   }
   .scroll-container {
     overflow-x: scroll;
+  }
+  .arrow > img {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
