@@ -37,6 +37,7 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  margin-bottom: 2rem;
 }
 .article-navigation {
   display: flex;
