@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useLocation } from "wouter";
 import menuIconURL from "./assets/menu_icon.svg";
 import closeMenuIconURL from "./assets/close_menu.svg";
 import logoURL from "./assets/logo.svg";
@@ -9,6 +8,7 @@ import shoppingListIconURL from "./assets/shopping_list.svg";
 import classes from "./header.module.css";
 export function Header({ showMenu, toggleShowMenu }) {
   const menuURL = !showMenu ? menuIconURL : closeMenuIconURL;
+  const [location, setLocation] = useLocation();
 
   return (
     <header>
@@ -26,9 +26,15 @@ export function Header({ showMenu, toggleShowMenu }) {
           ></img>
         </button>
         <h1 className={classes["main-logo"]}>
-          <a className={classes["main-logo-link"]} href="/">
+          <button
+            className={
+              classes["header-button"] + " " + classes["main-logo-link"]
+            }
+            href="/"
+            onClick={() => setLocation("/")}
+          >
             <img src={logoURL} alt="Trader Joe's Logo"></img>
-          </a>
+          </button>
         </h1>
       </div>
       {/* Search and Shopping list group */}
