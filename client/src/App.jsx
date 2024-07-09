@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Route, Switch } from "wouter";
 import { Header } from "./header";
 import { Menu } from "./menu";
 import { Home } from "./home";
@@ -15,7 +15,12 @@ function App() {
         <div className={showMenu ? "show-menu" : "hide-menu"}>
           <Menu />
         </div>
-        {!showMenu && <Home></Home>}
+        {!showMenu && (
+          <Switch>
+            <Route path="/" component={Home}></Route>
+            <Route path="/home" component={Home}></Route>
+          </Switch>
+        )}
       </main>
     </>
   );

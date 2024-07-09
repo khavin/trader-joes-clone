@@ -1,6 +1,7 @@
 import classes from "./section_header.module.css";
 
 export function SectionHeader({ title, imageLink }) {
+  console.log(imageLink);
   return (
     <h2
       className={
