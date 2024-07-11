@@ -20,6 +20,8 @@ export function Home() {
   return (
     <Switch>
       <Route path="/products*" component={Product}></Route>
+      <Route path="/products/categories/:category" component={Product}></Route>
+
       <Route>
         {modelData === null ? (
           <p>Loading ...</p>

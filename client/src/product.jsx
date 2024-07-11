@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { useLocation, useParams } from "wouter";
 import classes from "./product.module.css";
 
 export function Product() {
@@ -7,8 +7,9 @@ export function Product() {
   const [categories, setCategories] = useState(null);
   // The selected categories include both the top level selected category and
   // the selected sub category.
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const params = useParams();
 
+  // Fetch product categories and respective filters
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
@@ -23,70 +24,82 @@ export function Product() {
   }, []);
 
   if (loading) return <div>Loading ...</div>;
+
+  // Use the path param to identify the selected categories
+  const selectedCategories = [];
+
+  // This function can be called recursively to identify the selected category and its parent categories
+  function searchSubCategories(subCategories) {
+    if (subCategories.length === 0) return false;
+
+    for (let i = 0; i < subCategories.length; i++) {
+      if (subCategories[i].name === params.category) {
+        // Path param category matched
+        selectedCategories.push(subCategories[i].name);
+        return true;
+      }
+
+      if (searchSubCategories(subCategories[i].subCategories)) {
+        // One of the sub categories has matching path param category
+        selectedCategories.push(subCategories[i].name);
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  searchSubCategories(categories);
+
   return (
-    <div>
-      <ProductNav
-        categories={categories}
-        selectedCategories={selectedCategories}
-        setSelectedCategories={setSelectedCategories}
-        // Default level of categories. For sub categories level will be incremented by one.
-        level={0}
-      />
-    </div>
+    <section className={classes["products-section"]}>
+      <aside>
+        <ProductNav
+          categories={categories}
+          selectedCategories={selectedCategories}
+          // Default level of categories. For sub categories level will be incremented by one.
+          level={0}
+        />
+      </aside>
+    </section>
   );
 }
 
-function ProductNav({
-  categories,
-  selectedCategories,
-  setSelectedCategories,
-  level,
-}) {
+function ProductNav({ categories, selectedCategories, level }) {
+  const [_, navigate] = useLocation();
   const categoryList = categories.map((category) => {
     // Search if the category is selected or not using indexOf function.
     const indexInSelected = selectedCategories.indexOf(category.name);
-    let applicableClasses = "";
+    let applicableClasses = classes["product-category"];
+
+    if (level == 0) applicableClasses += " " + classes["top-category"];
+    if (level > 0) applicableClasses += " " + classes["sub-category"];
 
     if (indexInSelected != -1) {
-      // Make the category string bold if it is selected.
-      applicableClasses += classes["selectedCategory"];
-      if (indexInSelected === selectedCategories.length - 1) {
-        // Make the category active if it is the last one selected.
-        applicableClasses += " " + classes["activeCategory"];
+      // Make the category string bold if the category is a parent of the selected category.
+      applicableClasses += " " + classes["selected-category"];
+      if (indexInSelected === 0) {
+        // Make the category active if it is the selected category.
+        applicableClasses += " " + classes["active-category"];
       }
     }
 
     return (
       <li key={category.name}>
-        <span
+        <button
           onClick={() => {
-            let updatedSelectedCategories = [...selectedCategories];
-
-            // Check if there are any other categories selected in the same level or has level more than
-            // the current category. If selected pop them recurisively until we reach one level lesser
-            // than the current level.
-            while (updatedSelectedCategories.length > level) {
-              updatedSelectedCategories.pop();
-            }
-
-            // Add category name to selected categories list
-            updatedSelectedCategories = [
-              ...updatedSelectedCategories,
-              category.name,
-            ];
-            setSelectedCategories(updatedSelectedCategories);
+            navigate("/products/categories/" + category.name);
           }}
           className={applicableClasses}
         >
           {category.name}
-        </span>
+        </button>
         {/* If the selected category has sub categories, display them recursively by using ProductNav component */}
         {selectedCategories.includes(category.name) &&
           category.subCategories.length > 0 && (
             <ProductNav
               categories={category.subCategories}
               selectedCategories={selectedCategories}
-              setSelectedCategories={setSelectedCategories}
               // Increment level by one for sub categories
               level={level + 1}
             />
@@ -97,7 +110,7 @@ function ProductNav({
 
   return (
     <nav>
-      <ul>{categoryList}</ul>
+      <ul className={classes["nav-list"]}>{categoryList}</ul>
     </nav>
   );
 }

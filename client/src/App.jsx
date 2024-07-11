@@ -3,7 +3,6 @@ import { Route, Switch } from "wouter";
 import { Header } from "./header";
 import { Menu } from "./menu";
 import { Home } from "./home";
-import { Product } from "./product";
 import "./App.css";
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
     <>
       <Header showMenu={showMenu} toggleShowMenu={toggleShowMenu} />
       <main>
+        {/* TODO: This is a mistake. Menu component should be present inside header and not inside main. */}
         <div className={showMenu ? "show-menu" : "hide-menu"}>
           <Menu />
         </div>
