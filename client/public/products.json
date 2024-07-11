@@ -1,53 +1,53 @@
 [
   {
     "name": "What's New",
-    "sub-categories": [],
+    "subCategories": [],
     "filters": ["Organic", "Kosher"]
   },
   {
     "name": "Food",
-    "sub-categories": [
+    "subCategories": [
       {
         "name": "Bakery",
-        "sub-categories": [],
+        "subCategories": [],
         "filters": ["Organic", "Kosher"]
       },
       {
         "name": "Cheese",
-        "sub-categories": [],
+        "subCategories": [],
         "filters": ["Grass Fed", "Dairy Free"]
       },
       {
         "name": "Dairy & Eggs",
-        "sub-categories": [],
+        "subCategories": [],
         "filters": ["Antibiotic Free", "Dairy Free"]
       }
     ]
   },
   {
     "name": "Beverages",
-    "sub-categories": [
+    "subCategories": [
       {
         "name": "Coffee & Tea",
-        "sub-categories": [],
+        "subCategories": [],
         "filters": ["Organic", "Fair Trade"]
       },
       {
         "name": "Juices & More",
-        "sub-categories": [],
+        "subCategories": [],
         "filters": ["Organic", "Kosher"]
       }
     ]
   },
   {
     "name": "Flowers & Plants",
-    "sub-categories": []
+    "subCategories": []
   },
   {
     "name": "Everything else",
-    "sub-categories": [
-      { "name": "Household Essentials", "sub-categories": [] },
-      { "name": "For the Face & Body", "sub-categories": [] }
+    "subCategories": [
+      { "name": "Household Essentials", "subCategories": [] },
+      { "name": "For the Face & Body", "subCategories": [] }
     ]
   }
 ]

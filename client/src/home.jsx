@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Route, Switch } from "wouter";
 import { Hero } from "./hero";
 import { WhatsNew } from "./whats_new";
+import { Product } from "./product";
 import { BelieveEatOrNotRecipes } from "./Believe_Eat_Or_Not_Recipes";
 import { Podcasts } from "./podcasts";
 import classes from "./home.module.css";
@@ -16,33 +18,38 @@ export function Home() {
     fetchData();
   }, []);
   return (
-    <>
-      {modelData === null ? (
-        <p>Loading ...</p>
-      ) : (
-        <>
-          <Hero data={modelData.heroContent} />
-          <section className={classes["main-content"]}>
-            <h1 className={classes["main-welcome-msg"]}>
-              Welcome to Trader Joe's!
-            </h1>
-            <div className={classes["whats-new-podcasts-container"]}>
-              <section className={classes["whats-new-section"]}>
-                <WhatsNew articles={modelData.whatsNew} />
-              </section>
-              <section className={classes["podcasts-section"]}>
-                <Podcasts />
-              </section>
-            </div>
+    <Switch>
+      <Route path="/products*" component={Product}></Route>
+      <Route>
+        {modelData === null ? (
+          <p>Loading ...</p>
+        ) : (
+          <>
+            <Hero data={modelData.heroContent} />
+            <section className={classes["main-content"]}>
+              <h1 className={classes["main-welcome-msg"]}>
+                Welcome to Trader Joe's!
+              </h1>
+              <div className={classes["whats-new-podcasts-container"]}>
+                <section className={classes["whats-new-section"]}>
+                  <WhatsNew articles={modelData.whatsNew} />
+                </section>
+                <section className={classes["podcasts-section"]}>
+                  <Podcasts />
+                </section>
+              </div>
 
-            <section className={classes["believe-eat-or-not-recipes-section"]}>
-              <BelieveEatOrNotRecipes />
+              <section
+                className={classes["believe-eat-or-not-recipes-section"]}
+              >
+                <BelieveEatOrNotRecipes />
+              </section>
+              <br></br>
+              <br></br>
             </section>
-            <br></br>
-            <br></br>
-          </section>
-        </>
-      )}
-    </>
+          </>
+        )}
+      </Route>
+    </Switch>
   );
 }

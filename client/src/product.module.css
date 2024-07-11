@@ -1,0 +1,6 @@
+.selectedCategory {
+  font-weight: 600;
+}
+.activeCategory {
+  border-bottom: 2px solid var(--red-color);
+}

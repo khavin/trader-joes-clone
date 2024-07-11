@@ -3,6 +3,7 @@ import { Route, Switch } from "wouter";
 import { Header } from "./header";
 import { Menu } from "./menu";
 import { Home } from "./home";
+import { Product } from "./product";
 import "./App.css";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         {!showMenu && (
           <Switch>
             <Route path="/" component={Home}></Route>
-            <Route path="/home" component={Home}></Route>
+            <Route path="/home" component={Home} nest></Route>
           </Switch>
         )}
       </main>
