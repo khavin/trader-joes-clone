@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "wouter";
-import classes from "./product.module.css";
 
-export function Product() {
+import { BreadCrumb } from "./breadcrumb";
+import classes from "./products.module.css";
+
+export function Products() {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState(null);
   // The selected categories include both the top level selected category and
   // the selected sub category.
-  const params = useParams();
+  let params = useParams();
+  const [location, navigate] = useLocation();
+
+  // Path Params will not update if the path has no params.
+  // Seems like a bug in wouter.
+  if (location.indexOf("categories") === -1) params = "";
 
   // Fetch product categories and respective filters
   useEffect(() => {
@@ -48,11 +55,27 @@ export function Product() {
 
     return false;
   }
-
   searchSubCategories(categories);
+
+  const breadCrumbPaths = selectedCategories.map((category) => {
+    return {
+      name: category,
+      url: `/products/categories/${category}`,
+    };
+  });
+
+  breadCrumbPaths.push({
+    name: "Products",
+    url: `/products`,
+  });
+  breadCrumbPaths.push({
+    name: "Home",
+    url: `/`,
+  });
 
   return (
     <section className={classes["products-section"]}>
+      <BreadCrumb paths={breadCrumbPaths.reverse()} />
       <aside>
         <ProductNav
           categories={categories}

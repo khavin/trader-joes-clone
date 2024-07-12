@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Switch } from "wouter";
 import { Hero } from "./hero";
 import { WhatsNew } from "./whats_new";
-import { Product } from "./product";
+import { Products } from "./products";
 import { BelieveEatOrNotRecipes } from "./Believe_Eat_Or_Not_Recipes";
 import { Podcasts } from "./podcasts";
 import classes from "./home.module.css";
@@ -19,8 +19,8 @@ export function Home() {
   }, []);
   return (
     <Switch>
-      <Route path="/products*" component={Product}></Route>
-      <Route path="/products/categories/:category" component={Product}></Route>
+      <Route path="/products*" component={Products}></Route>
+      <Route path="/products/categories/:category" component={Products}></Route>
 
       <Route>
         {modelData === null ? (

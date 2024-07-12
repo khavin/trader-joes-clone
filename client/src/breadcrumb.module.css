@@ -1,0 +1,26 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.divider {
+  transform: rotate(180deg);
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.link-text {
+  text-decoration: none;
+  color: var(--dark-brown-color);
+  font-weight: 600;
+}
+.link-text:hover {
+  color: black;
+  text-decoration: underline;
+}
+.last-path {
+  color: var(--grey-color);
+}
