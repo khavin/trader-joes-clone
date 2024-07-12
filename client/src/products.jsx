@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "wouter";
-
+import { useWindowDimensions } from "./hooks/windowDimension";
+import { MOBILE_WIDTH } from "./constants";
 import { BreadCrumb } from "./breadcrumb";
 import classes from "./products.module.css";
 import ProductURL from "./assets/products.webp";
+import LeftNavSvgURL from "./assets/left_nav.svg";
 
 export function Products() {
+  // Mobile width
+  const { width } = useWindowDimensions();
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState(null);
   // The selected categories include both the top level selected category and
@@ -36,6 +40,10 @@ export function Products() {
   // Use the path param to identify the selected categories
   const selectedCategories = [];
 
+  // The sub categories to show if we are showing the select element as the products nav.
+  // By default show top level categories
+  let finalSubCategories = categories;
+
   // This function can be called recursively to identify the selected category and its parent categories
   function searchSubCategories(subCategories) {
     if (subCategories.length === 0) return false;
@@ -44,6 +52,9 @@ export function Products() {
       if (subCategories[i].name === params.category) {
         // Path param category matched
         selectedCategories.push(subCategories[i].name);
+        // Keep track of the selected category's sub categories.
+        // This will be showed in the select products nav.
+        finalSubCategories = subCategories[i].subCategories;
         return true;
       }
 
@@ -78,14 +89,23 @@ export function Products() {
     <section className={classes["products-section"]}>
       <BreadCrumb paths={breadCrumbPaths.reverse()} />
       <FeaturedProducts />
-      <aside>
-        <ProductNav
-          categories={categories}
-          selectedCategories={selectedCategories}
-          // Default level of categories. For sub categories level will be incremented by one.
-          level={0}
-        />
-      </aside>
+      {width <= MOBILE_WIDTH ? (
+        finalSubCategories.length > 0 && (
+          <ProductNavAsSelect
+            category={params === "" ? "Products" : params.category}
+            subCategories={finalSubCategories}
+          />
+        )
+      ) : (
+        <aside>
+          <ProductNav
+            categories={categories}
+            selectedCategories={selectedCategories}
+            // Default level of categories. For sub categories level will be incremented by one.
+            level={0}
+          />
+        </aside>
+      )}
     </section>
   );
 }
@@ -137,6 +157,44 @@ function ProductNav({ categories, selectedCategories, level }) {
     <nav>
       <ul className={classes["nav-list"]}>{categoryList}</ul>
     </nav>
+  );
+}
+
+function ProductNavAsSelect({ category, subCategories }) {
+  const [_, navigate] = useLocation();
+  const [menuVisible, setMenuVisible] = useState(false);
+  return (
+    <div className={classes["product-nav-select"]}>
+      <button
+        className={classes["nav-toggle-button"]}
+        aria-expanded={menuVisible}
+        onClick={() => {
+          setMenuVisible(!menuVisible);
+        }}
+      >
+        {"All " + category}
+        <img
+          className={menuVisible ? classes["close-menu"] : classes["open-menu"]}
+          src={LeftNavSvgURL}
+        ></img>
+      </button>
+      {menuVisible && (
+        <nav className={classes["nav-list"]}>
+          {subCategories.map((subCategory) => (
+            <button
+              className={classes["product-category"]}
+              onClick={() => {
+                setMenuVisible(false);
+                navigate("/products/categories/" + subCategory.name);
+              }}
+              key={subCategory.name}
+            >
+              {subCategory.name}
+            </button>
+          ))}
+        </nav>
+      )}
+    </div>
   );
 }
 
