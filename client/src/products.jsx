@@ -20,6 +20,7 @@ export function Products() {
   // Path Params will not update if the path has no params.
   // Seems like a bug in wouter.
   if (location.indexOf("categories") === -1) params = "";
+  const selectedCategory = params === "" ? "Products" : params.category;
 
   // Fetch product categories and respective filters
   useEffect(() => {
@@ -49,7 +50,7 @@ export function Products() {
     if (subCategories.length === 0) return false;
 
     for (let i = 0; i < subCategories.length; i++) {
-      if (subCategories[i].name === params.category) {
+      if (subCategories[i].name === selectedCategory) {
         // Path param category matched
         selectedCategories.push(subCategories[i].name);
         // Keep track of the selected category's sub categories.
@@ -89,23 +90,28 @@ export function Products() {
     <section className={classes["products-section"]}>
       <BreadCrumb paths={breadCrumbPaths.reverse()} />
       <FeaturedProducts />
-      {width <= MOBILE_WIDTH ? (
-        finalSubCategories.length > 0 && (
-          <ProductNavAsSelect
-            category={params === "" ? "Products" : params.category}
-            subCategories={finalSubCategories}
-          />
-        )
-      ) : (
-        <aside>
-          <ProductNav
-            categories={categories}
-            selectedCategories={selectedCategories}
-            // Default level of categories. For sub categories level will be incremented by one.
-            level={0}
-          />
-        </aside>
-      )}
+      <div className={classes["nav-and-content-container"]}>
+        {width <= MOBILE_WIDTH ? (
+          finalSubCategories.length > 0 && (
+            <ProductNavAsSelect
+              category={selectedCategory}
+              subCategories={finalSubCategories}
+            />
+          )
+        ) : (
+          <aside>
+            <ProductNav
+              categories={categories}
+              selectedCategories={selectedCategories}
+              // Default level of categories. For sub categories level will be incremented by one.
+              level={0}
+            />
+          </aside>
+        )}
+        <main>
+          <h2>{selectedCategory}</h2>
+        </main>
+      </div>
     </section>
   );
 }

@@ -29,6 +29,10 @@
 .active-category {
   border-bottom: 3px solid var(--red-color);
 }
+.nav-and-content-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
 .featured-products-container {
   display: flex;
   align-items: center;
@@ -81,6 +85,9 @@
   .product-category {
     color: var(--grey-color);
     font-size: 0.875rem;
+  }
+  .nav-and-content-container {
+    display: block;
   }
   .featured-products-container {
     display: block;
