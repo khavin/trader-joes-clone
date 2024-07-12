@@ -3,6 +3,7 @@ import { useLocation, useParams } from "wouter";
 
 import { BreadCrumb } from "./breadcrumb";
 import classes from "./products.module.css";
+import ProductURL from "./assets/products.webp";
 
 export function Products() {
   const [loading, setLoading] = useState(true);
@@ -76,6 +77,7 @@ export function Products() {
   return (
     <section className={classes["products-section"]}>
       <BreadCrumb paths={breadCrumbPaths.reverse()} />
+      <FeaturedProducts />
       <aside>
         <ProductNav
           categories={categories}
@@ -135,5 +137,27 @@ function ProductNav({ categories, selectedCategories, level }) {
     <nav>
       <ul className={classes["nav-list"]}>{categoryList}</ul>
     </nav>
+  );
+}
+
+function FeaturedProducts() {
+  const content =
+    "These are some of the greatest products to arrive on our shelves. We'll be continuing to add product hall-of-famers to this list; keep checking back for updates";
+
+  const title = "Featured Products";
+
+  return (
+    <section className={classes["featured-products-container"]}>
+      <div>
+        <img
+          className={classes["featured-products-img"]}
+          src={ProductURL}
+        ></img>
+      </div>
+      <div>
+        <h3 className={classes["featured-products-title"]}>{title}</h3>
+        <p className={classes["featured-products-content"]}>{content}</p>
+      </div>
+    </section>
   );
 }

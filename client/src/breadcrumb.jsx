@@ -12,15 +12,15 @@ export function BreadCrumb({ paths }) {
               {path.name}
             </li>
           );
-        }
-        return (
-          <li key={path.name} className={classes["link"]} key={path.name}>
-            <Link className={classes["link-text"]} to={path.url}>
-              {path.name}
-            </Link>{" "}
-            <img className={classes["divider"]} src={LeftNavSvgURL}></img>
-          </li>
-        );
+        } else
+          return (
+            <li key={path.name} className={classes["link"]}>
+              <Link className={classes["link-text"]} to={path.url}>
+                {path.name}
+              </Link>{" "}
+              <img className={classes["divider"]} src={LeftNavSvgURL}></img>
+            </li>
+          );
       })}
     </ol>
   );
