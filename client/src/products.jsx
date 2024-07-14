@@ -3,15 +3,20 @@ import { useLocation, useParams } from "wouter";
 import { useWindowDimensions } from "./hooks/windowDimension";
 import { MOBILE_WIDTH } from "./constants";
 import { BreadCrumb } from "./breadcrumb";
+import { ProductItem } from "./product_item";
 import classes from "./products.module.css";
 import ProductURL from "./assets/products.webp";
 import LeftNavSvgURL from "./assets/left_nav.svg";
+import Loader from "./loader";
 
 export function Products() {
   // Mobile width
   const { width } = useWindowDimensions();
   const [loading, setLoading] = useState(true);
+  const [itemsloading, setItemsLoading] = useState(true);
   const [categories, setCategories] = useState(null);
+  const [productItems, setProductItems] = useState({});
+  const [pageNumber, setPageNumber] = useState(0);
   // The selected categories include both the top level selected category and
   // the selected sub category.
   let params = useParams();
@@ -36,7 +41,39 @@ export function Products() {
     fetchData();
   }, []);
 
-  if (loading) return <div>Loading ...</div>;
+  // Fetch product items
+  useEffect(() => {
+    async function fetchData() {
+      setItemsLoading(true);
+      const response = await fetch("/test_product_items.json");
+      const data = await response.json();
+
+      const updatedProductItems = structuredClone(productItems);
+      if (!(selectedCategory in updatedProductItems)) {
+        updatedProductItems[selectedCategory] = {};
+      }
+      updatedProductItems[selectedCategory][pageNumber] = data;
+      setProductItems(updatedProductItems);
+      setItemsLoading(false);
+      console.log(updatedProductItems);
+    }
+
+    // Only fetch the data if the page data or the selected category
+    // is not available in memory.
+    if (
+      !(selectedCategory in productItems) ||
+      !(pageNumber in productItems[selectedCategory])
+    ) {
+      fetchData();
+    }
+  }, [selectedCategory, pageNumber]);
+
+  if (loading)
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
 
   // Use the path param to identify the selected categories
   const selectedCategories = [];
@@ -110,6 +147,23 @@ export function Products() {
         )}
         <main>
           <h2>{selectedCategory}</h2>
+          {/* TODO - Two conditions are used to check if the items are loading or not. Fix it. */}
+          {itemsloading || !(selectedCategory in productItems) ? (
+            <Loader />
+          ) : (
+            <ul className={classes["product-list"]}>
+              {productItems[selectedCategory][pageNumber].map((item) => (
+                <ProductItem
+                  key={item.name}
+                  itemName={item.name}
+                  category={item.category}
+                  price={item.price}
+                  perUnit={item.perUnit}
+                  imgURL={item.imgURL}
+                />
+              ))}
+            </ul>
+          )}
         </main>
       </div>
     </section>
@@ -174,6 +228,7 @@ function ProductNavAsSelect({ category, subCategories }) {
       <button
         className={classes["nav-toggle-button"]}
         aria-expanded={menuVisible}
+        aria-controls="product-categories-navigation"
         onClick={() => {
           setMenuVisible(!menuVisible);
         }}
@@ -185,7 +240,7 @@ function ProductNavAsSelect({ category, subCategories }) {
         ></img>
       </button>
       {menuVisible && (
-        <nav className={classes["nav-list"]}>
+        <nav id="product-categories-navigation" className={classes["nav-list"]}>
           {subCategories.map((subCategory) => (
             <button
               className={classes["product-category"]}

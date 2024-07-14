@@ -31,7 +31,7 @@
 }
 .nav-and-content-container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% auto;
 }
 .featured-products-container {
   display: flex;
@@ -76,6 +76,11 @@
 .close-menu {
   transform: rotate(90deg);
 }
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
 
 @media only screen and (max-width: 750px) {
   .products-section {
@@ -98,5 +103,9 @@
   }
   .featured-products-content {
     width: 100%;
+  }
+  .product-list {
+    justify-content: space-between;
+    gap: 0.45rem;
   }
 }

@@ -1,0 +1,6 @@
+.loader-bg {
+  stroke: var(--pale-red-color);
+}
+.loader-fg {
+  stroke: var(--red-color);
+}
