@@ -75,12 +75,7 @@ export function Products() {
     }
   }, [selectedCategory, pageNumber]);
 
-  if (loading)
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
+  if (loading) return <Loader />;
 
   // Use the path param to identify the selected categories
   const selectedCategories = [];
