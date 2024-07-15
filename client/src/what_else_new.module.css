@@ -1,0 +1,16 @@
+.container {
+  width: 75%;
+}
+.scroll-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  margin: 2rem 0;
+}
+.page {
+  width: 100%;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-around;
+}

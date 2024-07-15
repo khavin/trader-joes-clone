@@ -1,0 +1,68 @@
+{
+  "length": "6",
+  "data": [
+    {
+      "name": "Savory Squares",
+      "category": "Chips, Crackers & Crunchy",
+      "price": "3.99",
+      "perUnit": "5 Oz",
+      "imgURL": "/savory.webp"
+    },
+    {
+      "name": "Oven Dried Red & Yellow Bell Pepper Crisps",
+      "category": "Chips, Crackers & Crunchy",
+      "price": "1.99",
+      "perUnit": "1.41 Oz",
+      "imgURL": "/pepper.webp"
+    },
+    {
+      "name": "Super Strawberry Sorbet",
+      "category": "Cool Desserts",
+      "price": "3.99",
+      "perUnit": "16 Fl Oz",
+      "imgURL": "/strawberry.webp"
+    },
+    {
+      "name": "Lemon Ginger Cheesecake",
+      "category": "Cool Desserts",
+      "price": "7.99",
+      "perUnit": "30 Oz",
+      "imgURL": "/ginger.webp"
+    },
+    {
+      "name": "Chickpea Fusilli Pasta",
+      "category": "Pastas & Grains",
+      "price": ".99",
+      "perUnit": "12 Oz",
+      "imgURL": "/chickpea.webp"
+    },
+    {
+      "name": "Vanilla Cookie Thins",
+      "category": "Candies & Cookies",
+      "price": "4.49",
+      "perUnit": "9 Oz",
+      "imgURL": "/vanilla.webp"
+    },
+    {
+      "name": "Passion Fruit Granola",
+      "category": "Cereals",
+      "price": "3.59",
+      "perUnit": "12 Oz",
+      "imgURL": "/granola.webp"
+    },
+    {
+      "name": "Kenya AA Karatu Small Lot Coffee",
+      "category": "Coffee & Tea",
+      "price": "9.99",
+      "perUnit": "12 Oz",
+      "imgURL": "/coffee.webp"
+    },
+    {
+      "name": "French Roast Whole Bean Coffee",
+      "category": "Coffee & Tea",
+      "price": "5.99",
+      "perUnit": "13 Oz",
+      "imgURL": "/french_roast.webp"
+    }
+  ]
+}

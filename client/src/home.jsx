@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Route, Switch } from "wouter";
 import { Hero } from "./hero";
 import { WhatsNew } from "./whats_new";
+import { WhatElseNew } from "./what_else_new";
 import { Products } from "./products";
-import { BelieveEatOrNotRecipes } from "./Believe_Eat_Or_Not_Recipes";
 import { Podcasts } from "./podcasts";
+import ArchimedesURL from "./assets/archimedes.webp";
+
 import classes from "./home.module.css";
 export function Home() {
   const [modelData, setModelData] = useState(null);
@@ -41,11 +43,12 @@ export function Home() {
                 </section>
               </div>
 
-              <section
-                className={classes["believe-eat-or-not-recipes-section"]}
-              >
-                <BelieveEatOrNotRecipes />
-              </section>
+              <div className={classes["what-else-new-section"]}>
+                <WhatElseNew />
+                <picture>
+                  <img src={ArchimedesURL} />
+                </picture>
+              </div>
               <br></br>
               <br></br>
             </section>

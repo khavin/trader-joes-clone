@@ -28,6 +28,7 @@
   height: 4.5rem;
   overflow: hidden;
   display: -webkit-box;
+  margin-bottom: 2rem;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -35,7 +36,6 @@
   display: flex;
   gap: 0.5rem;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
 @media only screen and (max-width: 750px) {

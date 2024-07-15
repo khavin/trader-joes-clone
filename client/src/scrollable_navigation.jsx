@@ -20,7 +20,7 @@ export function ScrollableNavigation({
     // Scroll to the corresponding element id
     document
       .getElementById(componentId + idString + nextPage)
-      .scrollIntoView(true);
+      .scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   // We only want to show the pagination for desktop screens

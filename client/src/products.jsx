@@ -6,7 +6,7 @@ import { MOBILE_WIDTH } from "./constants";
 
 import { BreadCrumb } from "./breadcrumb";
 import { ProductItem } from "./product_item";
-import Loader from "./loader";
+import { Loader } from "./loader";
 
 import classes from "./products.module.css";
 

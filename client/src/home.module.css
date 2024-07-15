@@ -18,8 +18,12 @@
 .podcasts-section {
   width: 100%;
 }
-.believe-eat-or-not-recipes-section {
+.what-else-new-section {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem 0;
 }
 @media only screen and (max-width: 750px) {
   .main-content {

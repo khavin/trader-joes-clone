@@ -1,6 +1,6 @@
 import classes from "./loader.module.css";
 
-export default function Loader({ width = 70, height = 70 }) {
+export function Loader({ width = 70, height = 70 }) {
   return (
     <div className={classes["loader-container"]}>
       <svg
