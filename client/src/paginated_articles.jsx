@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 import { useWindowDimensions } from "./hooks/windowDimension";
-import ArrowURL from "./assets/arrow.svg";
+import { ScrollableNavigation } from "./scrollable_navigation";
 import classes from "./paginated_articles.module.css";
 
 import { MOBILE_WIDTH } from "./constants";
@@ -11,14 +11,7 @@ export function PaginatedArticles({ articles }) {
   // Current window width
   const { width } = useWindowDimensions();
 
-  function setPageAndScroll(nextPage) {
-    // Set page number
-    setPage(nextPage);
-    // Scroll to the corresponding element id
-    document
-      .getElementById(componentId + "-article-" + nextPage)
-      .scrollIntoView(true);
-  }
+  const idString = "-article-";
 
   // Create article elements
   const elements = articles.map((article, index) => {
@@ -32,7 +25,7 @@ export function PaginatedArticles({ articles }) {
 
     return (
       <article
-        id={componentId + "-article-" + index}
+        id={componentId + idString + index}
         className={classes["article"]}
         key={article.title}
       >
@@ -57,64 +50,16 @@ export function PaginatedArticles({ articles }) {
     );
   });
 
-  // We only want to show the pagination for desktop screens
-  const numberPagination =
-    width > MOBILE_WIDTH ? (
-      articles.map((_, index) => {
-        return (
-          <button
-            className={
-              classes["nav-button"] +
-              " " +
-              (index === page && classes["active"])
-            }
-            key={componentId + "-button-" + index}
-            onClick={() => {
-              setPageAndScroll(index);
-            }}
-          >
-            {index + 1}
-          </button>
-        );
-      })
-    ) : (
-      // The presentation bullets will be shown for the mobile screens
-      <div className={classes["bullets"]} role="presentation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    );
   return (
     <>
       <div className={classes["scroll-container"]}>{elements}</div>
-      <nav className={classes["article-navigation"]}>
-        <button
-          className={classes["nav-button"] + " " + classes["arrow"]}
-          onClick={() => {
-            const nextPage = (articles.length + page - 1) % articles.length;
-            setPageAndScroll(nextPage);
-          }}
-        >
-          <img src={ArrowURL}></img>
-        </button>
-        {numberPagination}
-        <button
-          className={
-            classes["nav-button"] +
-            " " +
-            classes["arrow"] +
-            " " +
-            classes["right-arrow"]
-          }
-          onClick={() => {
-            const nextPage = (page + 1) % articles.length;
-            setPageAndScroll(nextPage);
-          }}
-        >
-          <img src={ArrowURL}></img>
-        </button>
-      </nav>
+      <ScrollableNavigation
+        componentId={componentId}
+        totalLength={articles.length}
+        page={page}
+        setPage={setPage}
+        idString={idString}
+      />
     </>
   );
 }
