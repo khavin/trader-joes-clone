@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "wouter";
+
 import { useWindowDimensions } from "./hooks/windowDimension";
 import { MOBILE_WIDTH } from "./constants";
+
 import { BreadCrumb } from "./breadcrumb";
 import { ProductItem } from "./product_item";
+import Loader from "./loader";
+
 import classes from "./products.module.css";
+
 import ProductURL from "./assets/products.webp";
 import LeftNavSvgURL from "./assets/left_nav.svg";
-import Loader from "./loader";
+import ArrowSvgURL from "./assets/arrow.svg";
 
 export function Products() {
   // Mobile width
@@ -16,7 +21,8 @@ export function Products() {
   const [itemsloading, setItemsLoading] = useState(true);
   const [categories, setCategories] = useState(null);
   const [productItems, setProductItems] = useState({});
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
   // The selected categories include both the top level selected category and
   // the selected sub category.
   let params = useParams();
@@ -46,14 +52,15 @@ export function Products() {
     async function fetchData() {
       setItemsLoading(true);
       const response = await fetch("/test_product_items.json");
-      const data = await response.json();
+      const responseJSON = await response.json();
 
       const updatedProductItems = structuredClone(productItems);
       if (!(selectedCategory in updatedProductItems)) {
         updatedProductItems[selectedCategory] = {};
       }
-      updatedProductItems[selectedCategory][pageNumber] = data;
+      updatedProductItems[selectedCategory][pageNumber] = responseJSON["data"];
       setProductItems(updatedProductItems);
+      setTotalItems(responseJSON["length"]);
       setItemsLoading(false);
       console.log(updatedProductItems);
     }
@@ -148,21 +155,30 @@ export function Products() {
         <main>
           <h2>{selectedCategory}</h2>
           {/* TODO - Two conditions are used to check if the items are loading or not. Fix it. */}
-          {itemsloading || !(selectedCategory in productItems) ? (
+          {itemsloading ||
+          !(selectedCategory in productItems) ||
+          !(pageNumber in productItems[selectedCategory]) ? (
             <Loader />
           ) : (
-            <ul className={classes["product-list"]}>
-              {productItems[selectedCategory][pageNumber].map((item) => (
-                <ProductItem
-                  key={item.name}
-                  itemName={item.name}
-                  category={item.category}
-                  price={item.price}
-                  perUnit={item.perUnit}
-                  imgURL={item.imgURL}
-                />
-              ))}
-            </ul>
+            <>
+              <ul className={classes["product-list"]}>
+                {productItems[selectedCategory][pageNumber].map((item) => (
+                  <ProductItem
+                    key={item.name}
+                    itemName={item.name}
+                    category={item.category}
+                    price={item.price}
+                    perUnit={item.perUnit}
+                    imgURL={item.imgURL}
+                  />
+                ))}
+              </ul>
+              <Pagination
+                pages={totalItems}
+                setPageNumber={setPageNumber}
+                pageNumber={pageNumber}
+              />
+            </>
           )}
         </main>
       </div>
@@ -278,5 +294,93 @@ function FeaturedProducts() {
         <p className={classes["featured-products-content"]}>{content}</p>
       </div>
     </section>
+  );
+}
+
+function Pagination({ pages, pageNumber, setPageNumber }) {
+  const adjacentPageButtons = [];
+
+  // If possible we want to show three page links before the current page
+  // and three page links after the current page
+  let start = Math.max(2, pageNumber - 3);
+  let end = Math.min(pages - 1, pageNumber + 3);
+
+  if (end - start + 1 < 7) {
+    if (end - pageNumber < 3) {
+      // In this case, we can't show three page links after the current page
+      // So here we can try to show more than 3 page links before the current page
+      const excess = 2 - (end - pageNumber);
+      start = Math.max(2, pageNumber - (3 + excess));
+    } else {
+      // In this case, we can't show three page links before the current page
+      // So here we can try to show more than 3 page links after the current page
+      const excess = 2 - (pageNumber - start);
+      end = Math.min(pages - 1, pageNumber + 3 + excess);
+    }
+  }
+
+  // Function to return the pagination button element
+  function getButton(currentPage) {
+    return (
+      <button
+        key={currentPage}
+        className={
+          classes["pagination-button"] +
+          " " +
+          (currentPage == pageNumber && classes["active-page"])
+        }
+        onClick={() => setPageNumber(currentPage)}
+      >
+        {currentPage}
+      </button>
+    );
+  }
+
+  // Always show the first page button
+  adjacentPageButtons.push(getButton(1));
+
+  // Show ellipsis if we are not showing buttons sequentially from start
+  if (start - 1 > 1) {
+    adjacentPageButtons.push(<span key={-1}>...</span>);
+  }
+
+  for (let i = start; i <= end; i++) {
+    adjacentPageButtons.push(getButton(i));
+  }
+
+  // Show ellipsis if we are not showing buttons sequentially from end
+  if (end + 1 < pages) {
+    adjacentPageButtons.push(<span key={-2}>...</span>);
+  }
+
+  // Always show the last page button
+  adjacentPageButtons.push(getButton(pages));
+
+  return (
+    <nav className={classes["pagination"]}>
+      {/* Left arrow to move one page left */}
+      <button
+        disabled={pageNumber === 1}
+        className={classes["pagination-button"] + " " + classes["arrow"]}
+        onClick={() => {
+          setPageNumber(pageNumber - 1);
+        }}
+      >
+        <img src={ArrowSvgURL} />
+      </button>
+
+      {adjacentPageButtons}
+
+      {/* Right arrow to move one page right */}
+      <button
+        disabled={pageNumber === pages}
+        className={classes["pagination-button"] + " " + classes["arrow"]}
+        onClick={() => {
+          setPageNumber(pageNumber + 1);
+        }}
+      >
+        <img className={classes["right-arrow"]} src={ArrowSvgURL} />
+      </button>
+    </nav>
   );
 }

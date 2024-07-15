@@ -1,51 +1,54 @@
-[
-  {
-    "name": "Kenya AA Karatu Small Lot Coffee",
-    "category": "Coffee & Tea",
-    "price": "9.99",
-    "perUnit": "12 Oz",
-    "imgURL": "/coffee.webp"
-  },
-  {
-    "name": "French Roast Whole Bean Coffee",
-    "category": "Coffee & Tea",
-    "price": "5.99",
-    "perUnit": "13 Oz",
-    "imgURL": "/french_roast.webp"
-  },
-  {
-    "name": "Yuzu Miso Topping & Spread",
-    "category": "Dressing & Seasoning",
-    "price": "3.99",
-    "perUnit": "7.37 Oz",
-    "imgURL": "/yuzu.webp"
-  },
-  {
-    "name": "Raspberry Croissant Carre",
-    "category": "Sweet Stuff",
-    "price": "5.99",
-    "perUnit": "11.29 Oz",
-    "imgURL": "/raspberry.webp"
-  },
-  {
-    "name": "Cotton Picnic Cloths",
-    "category": "Household Essentials",
-    "price": "5.99",
-    "perUnit": "1 Each",
-    "imgURL": "/cloths.webp"
-  },
-  {
-    "name": "French Market Sparkling Lemonade",
-    "category": "Sodas & Mixers",
-    "price": "3.69",
-    "perUnit": "1 L",
-    "imgURL": "/lemonade.webp"
-  },
-  {
-    "name": "Blueberry Elderflower beverage",
-    "category": "Juices & More",
-    "price": "3.29",
-    "perUnit": "16 Fl Oz",
-    "imgURL": "/elder.webp"
-  }
-]
+{
+  "length": "54",
+  "data": [
+    {
+      "name": "Kenya AA Karatu Small Lot Coffee",
+      "category": "Coffee & Tea",
+      "price": "9.99",
+      "perUnit": "12 Oz",
+      "imgURL": "/coffee.webp"
+    },
+    {
+      "name": "French Roast Whole Bean Coffee",
+      "category": "Coffee & Tea",
+      "price": "5.99",
+      "perUnit": "13 Oz",
+      "imgURL": "/french_roast.webp"
+    },
+    {
+      "name": "Yuzu Miso Topping & Spread",
+      "category": "Dressing & Seasoning",
+      "price": "3.99",
+      "perUnit": "7.37 Oz",
+      "imgURL": "/yuzu.webp"
+    },
+    {
+      "name": "Raspberry Croissant Carre",
+      "category": "Sweet Stuff",
+      "price": "5.99",
+      "perUnit": "11.29 Oz",
+      "imgURL": "/raspberry.webp"
+    },
+    {
+      "name": "Cotton Picnic Cloths",
+      "category": "Household Essentials",
+      "price": "5.99",
+      "perUnit": "1 Each",
+      "imgURL": "/cloths.webp"
+    },
+    {
+      "name": "French Market Sparkling Lemonade",
+      "category": "Sodas & Mixers",
+      "price": "3.69",
+      "perUnit": "1 L",
+      "imgURL": "/lemonade.webp"
+    },
+    {
+      "name": "Blueberry Elderflower beverage",
+      "category": "Juices & More",
+      "price": "3.29",
+      "perUnit": "16 Fl Oz",
+      "imgURL": "/elder.webp"
+    }
+  ]
+}
