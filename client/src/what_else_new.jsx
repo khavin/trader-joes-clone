@@ -27,7 +27,7 @@ export function WhatElseNew() {
     async function fetchData() {
       setLoading(true);
 
-      const response = await fetch("./test_what_else_new_items.json");
+      const response = await fetch("/test_what_else_new_items.json");
       const responseJSON = await response.json();
 
       setProducts(responseJSON["data"]);
