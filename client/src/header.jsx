@@ -1,4 +1,4 @@
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import menuIconURL from "./assets/menu_icon.svg";
 import closeMenuIconURL from "./assets/close_menu.svg";
 import logoURL from "./assets/logo.svg";
@@ -45,14 +45,14 @@ export function Header({ showMenu, toggleShowMenu }) {
           <img src={searchIconURL} alt="Search Icon"></img>
           <span className={classes["search-text"]}>Search</span>
         </button>
-        <a href="/" className={classes["shopping-list"]}>
+        <Link to="/home/shopping-list" className={classes["shopping-list"]}>
           <img
             className={classes["shopping-list-icon"]}
             src={shoppingListIconURL}
             alt="Shopping List Logo"
           ></img>
           <span className={classes["shopping-list-text"]}>Shopping List</span>
-        </a>
+        </Link>
       </div>
     </header>
   );

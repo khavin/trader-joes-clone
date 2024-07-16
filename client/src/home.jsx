@@ -5,6 +5,7 @@ import { WhatsNew } from "./whats_new";
 import { WhatElseNew } from "./what_else_new";
 import { Products } from "./products";
 import { Podcasts } from "./podcasts";
+import { ShoppingList } from "./shopping_list";
 import ArchimedesURL from "./assets/archimedes.webp";
 
 import classes from "./home.module.css";
@@ -21,6 +22,7 @@ export function Home() {
   }, []);
   return (
     <Switch>
+      <Route path="/shopping-list" component={ShoppingList}></Route>
       <Route path="/products*" component={Products}></Route>
       <Route path="/products/categories/:category" component={Products}></Route>
 
