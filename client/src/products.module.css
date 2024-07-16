@@ -142,6 +142,9 @@
     justify-content: space-between;
     gap: 0.45rem;
   }
+  .product-list > * {
+    flex-basis: 48.5%;
+  }
   .pagination {
     gap: 0rem;
     justify-content: space-between;

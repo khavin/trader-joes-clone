@@ -39,4 +39,8 @@
   .whats-new-section {
     width: 100%;
   }
+  .what-else-new-section {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

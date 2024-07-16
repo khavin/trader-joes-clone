@@ -1,15 +1,22 @@
 import { useId, useState, useEffect } from "react";
+import { useWindowDimensions } from "./hooks/windowDimension";
 import { SectionHeader } from "./section_header";
 import { Loader } from "./loader";
 import { ProductItem } from "./product_item";
 import { ScrollableNavigation } from "./scrollable_navigation";
+import { MOBILE_WIDTH } from "./constants";
 import classes from "./what_else_new.module.css";
 
 const title = "So, What Else is New?";
 // Only applicable in desktop view
-const productsPerSlide = 3;
 export function WhatElseNew() {
   const componentId = useId();
+  const { width } = useWindowDimensions();
+  let productsPerSlide = 3;
+
+  if (width <= MOBILE_WIDTH) {
+    productsPerSlide = 1;
+  }
   const idString = "-item-";
 
   const [page, setPage] = useState(0);

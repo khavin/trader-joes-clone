@@ -7,10 +7,27 @@
   overflow: hidden;
   flex-wrap: nowrap;
   margin: 2rem 0;
+  scroll-snap-type: x mandatory;
 }
 .page {
   width: 100%;
   display: flex;
   flex-shrink: 0;
   justify-content: space-around;
+  scroll-snap-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    width: 100%;
+  }
+  .scroll-container {
+    overflow: scroll;
+  }
+  .page {
+    width: 20rem;
+  }
+  .page > * {
+    flex-basis: 100%;
+  }
 }

@@ -62,7 +62,7 @@
 
 @media only screen and (max-width: 750px) {
   .product-item-container {
-    width: 48.5%;
+    max-width: unset;
   }
   .cart-button.add-to-list-button {
     font-size: 0.75rem;
