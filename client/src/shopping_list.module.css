@@ -1,5 +1,11 @@
 .container {
-  margin: 4rem 2.5rem;
+  max-width: 64rem;
+  margin: 3rem auto 0 auto;
+}
+.container-with-shopping-items {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 2rem;
 }
 .heading {
   display: flex;
@@ -61,6 +67,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0;
+  gap: 0.75rem;
 }
 .item-name {
   font-weight: 600;
@@ -69,14 +77,71 @@
 .item-weight {
   font-size: 0.85rem;
 }
+.info-and-action-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0;
+}
+.quantity-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.action-button {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.quantity-number {
+  width: 1rem;
+  text-align: center;
+}
+.about-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 1rem;
+  margin-top: 2.8rem;
+}
+.products-logo {
+  width: 4rem;
+}
+.about-list-text {
+  text-align: center;
+  line-height: 1.5rem;
+}
 @media only screen and (max-width: 750px) {
   .container {
     margin: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
   }
   .empty-content {
     margin: 1rem;
   }
   .empty-container-img {
     width: 23.75rem;
+  }
+  .info-and-action-buttons-container {
+    flex-direction: column;
+    margin: 0;
+  }
+  .action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
