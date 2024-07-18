@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Route, Switch } from "wouter";
 import { Header } from "./header";
+import { Footer } from "./footer";
 import { Menu } from "./menu";
 import { Home } from "./home";
 import { ShoppingListContext } from "./contexts/ShoppingListContext";
@@ -14,18 +15,19 @@ function App() {
     <>
       <ShoppingListContext.Provider value={[shoppingList, setShoppingList]}>
         <Header showMenu={showMenu} toggleShowMenu={toggleShowMenu} />
-        <main>
-          {/* TODO: This is a mistake. Menu component should be present inside header and not inside main. */}
-          <div className={showMenu ? "show-menu" : "hide-menu"}>
-            <Menu />
-          </div>
-          {!showMenu && (
+        {/* TODO: This is a mistake. Menu component should be present inside header and not inside main. */}
+        <div className={showMenu ? "show-menu" : "hide-menu"}>
+          <Menu />
+        </div>
+        {!showMenu && (
+          <main>
             <Switch>
               <Route path="/" component={Home}></Route>
               <Route path="/home" component={Home} nest></Route>
             </Switch>
-          )}
-        </main>
+            <Footer></Footer>
+          </main>
+        )}
       </ShoppingListContext.Provider>
     </>
   );
