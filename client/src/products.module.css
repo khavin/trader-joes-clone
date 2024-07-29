@@ -85,7 +85,7 @@
   margin: 3rem 0;
   display: flex;
   justify-content: center;
-  align-items: self-start;
+  align-items: center;
   gap: 1rem;
 }
 .pagination-button {
@@ -93,9 +93,10 @@
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  border-bottom: 3px solid white;
 }
 .pagination-button:hover {
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
 }
 .pagination-button:disabled {
   opacity: 0.4;
@@ -143,13 +144,17 @@
     gap: 0.45rem;
   }
   .product-list > * {
-    flex-basis: 48.5%;
+    flex-basis: 48%;
   }
   .pagination {
+    width: 100%;
     gap: 0rem;
     justify-content: space-between;
   }
   .arrow > img {
     height: 1rem;
+  }
+  .pagination-button {
+    padding: 0 0 0.25rem 0;
   }
 }
