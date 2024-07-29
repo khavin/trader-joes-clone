@@ -7,6 +7,7 @@ import { Products } from "./products";
 import { Podcasts } from "./podcasts";
 import { ShoppingList } from "./shopping_list";
 import ArchimedesURL from "./assets/archimedes.webp";
+import FlowerURL from "./assets/flower.webp";
 
 import classes from "./home.module.css";
 export function Home() {
@@ -40,9 +41,9 @@ export function Home() {
                 <section className={classes["whats-new-section"]}>
                   <WhatsNew articles={modelData.whatsNew} />
                 </section>
-                <section className={classes["podcasts-section"]}>
-                  <Podcasts />
-                </section>
+                <picture className={classes["flower-img"]}>
+                  <img src={FlowerURL} />
+                </picture>
               </div>
 
               <div className={classes["what-else-new-section"]}>

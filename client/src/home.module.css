@@ -15,6 +15,15 @@
 .whats-new-section {
   width: 57%;
 }
+.flower-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flower-img img {
+  width: 100%;
+}
 .podcasts-section {
   width: 100%;
 }
