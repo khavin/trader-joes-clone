@@ -62,7 +62,6 @@ export function Products() {
       setProductItems(updatedProductItems);
       setTotalItems(responseJSON["length"]);
       setItemsLoading(false);
-      console.log(updatedProductItems);
     }
 
     // Only fetch the data if the page data or the selected category

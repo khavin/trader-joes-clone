@@ -3,7 +3,7 @@ import { Route, Switch } from "wouter";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { Menu } from "./menu";
-import { Home } from "./home";
+import { Router } from "./router";
 import { ShoppingListContext } from "./contexts/ShoppingListContext";
 import "./App.css";
 
@@ -22,8 +22,8 @@ function App() {
         {!showMenu && (
           <main>
             <Switch>
-              <Route path="/" component={Home}></Route>
-              <Route path="/home" component={Home} nest></Route>
+              <Route path="/" component={Router}></Route>
+              <Route path="/home" component={Router} nest></Route>
             </Switch>
             <Footer></Footer>
           </main>
